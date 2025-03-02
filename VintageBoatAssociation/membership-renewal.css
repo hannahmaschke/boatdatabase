@@ -1,0 +1,180 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header Styling */
+header {
+    background-color: #a6cfff; /* Light blue background for header */
+    color: #fff;
+    padding: 10px 0;
+}
+
+/* Navigation Bar */
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #a6cfff;
+    padding: 10px 0;
+}
+
+nav a {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    padding: 12px 20px;
+    margin: 0 15px;
+    background-color: #007BFF;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover Effect for Navigation Links */
+nav a:hover {
+    background-color: #034995;
+    transform: scale(1.1);
+}
+
+/* Hero Section - Background Video (Optional) */
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    overflow: hidden;
+}
+
+.video-container video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+/* Content Styling */
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 30px;
+    color: #2a3d66;
+}
+
+/* Form Container */
+.container {
+    padding: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+/* Submit Button */
+button {
+    background-color: #007BFF;
+    color: white;
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #034995;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #a6cfff;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer nav a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+footer nav a:hover {
+    color: #f4a261; /* Change color on hover */
+}
+
+footer p {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #2d2d2d;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    nav a {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .form-group input {
+        font-size: 1rem;
+    }
+
+    button {
+        font-size: 1rem;
+    }
+
+    footer p {
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,103 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vintage Boat Association</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+
+    <!-- Background Video -->
+     
+    <div class="video-container">
+        <video autoplay loop muted>
+            <source src="videos/main.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="video-overlay"></div>
+
+    <header>
+        <h1>Welcome to the Vintage Boat Association!</h1>
+        <p>Preserving vintage boats and maritime heritage through events and community engagement.</p>
+        <nav>
+            <a href="../about-us.html">About Us</a>
+            <a href="../event-registration.html">Event Registration</a>
+            <a href="../number-registration.html">Number Registration</a>
+            <br></br>
+            <a href="../membership-renewal.html">Membership Renewal</a>
+            <a href="../main-hub.html">Main Hub</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- <h2>Our Mission</h2>
+        <p>The Vintage Boat Association (VBA) is dedicated to the preservation, restoration, and celebration of Canada's rich maritime heritage. 
+            Our community of enthusiasts, collectors, and restorers work together to keep the legacy of classic and antique boats alive.</p> -->
+        <h2>Upcoming Events</h2>
+        <p>The Vintage Boat Association (VBA) is dedicated to the preservation, restoration, and celebration of Canada's rich maritime heritage. 
+            Our community of enthusiasts, collectors, and restorers work together to keep the legacy of classic and antique boats alive.</p>
+            <br></br>
+        <div class="event-row">
+            <div class="event-container">
+                <img src="images/muskoka-boat-show.jpg" alt="Muskoka Antique & Classic Boat Show">
+                <h3>Muskoka Antique & Classic Boat Show</h3>
+                <p><strong>Date:</strong> July 13, 2025</p>
+                <p><strong>Location:</strong> Gravenhurst, Ontario</p>
+                <a href="../muskoka-boat-show.html" class="read-more-button">Read More</a>
+            </div>
+
+            <div class="event-container">
+                <img src="images/rideau-boat-festival.jpg" alt="Rideau Canal Vintage Boat Festival">
+                <h3>Rideau Canal Vintage Boat Festival</h3>
+                <p><strong>Date:</strong> August 10, 2025</p>
+                <p><strong>Location:</strong> Ottawa, Ontario</p>
+                <a href="../rideau-boat-festival.html" class="read-more-button">Read More</a>
+            </div>
+
+            <div class="event-container">
+                <img src="images/trent-severn-parade.jpg" alt="Trent-Severn Antique Boat Parade">
+                <h3>Trent-Severn Antique Boat Parade</h3>
+                <p><strong>Date:</strong> September 7, 2025</p>
+                <p><strong>Location:</strong> Peterborough, Ontario</p>
+                <a href="../trent-severn-boat-parade.html" class="read-more-button">Read More</a>
+            </div>
+        </div>
+    
+    </div>
+    <script>
+        // toggle grid padding
+        function myFunction() {
+          var x = document.getElementById("myGrid");
+          if (x.className === "w3-row") {
+            x.className = "w3-row-padding";
+          } else { 
+            x.className = x.className.replace("w3-row-padding", "w3-row");
+          }
+        }
+        
+        // open and close sidebar
+        function w3_open() {
+          document.getElementById("mySidebar").style.width = "100%";
+          document.getElementById("mySidebar").style.display = "block";
+        }
+        
+        function w3_close() {
+          document.getElementById("mySidebar").style.display = "none";
+        }
+        </script>
+
+    <footer>
+        <nav>
+            <a href="../faq.html">FAQ</a> |
+            <a href="../contact.html">Contact</a> |
+            <a href="../privacy-policy.html">Privacy Policy</a> |
+            <a href="../terms.html">Terms</a>
+        </nav>
+        <p>© 2025 Vintage Boat Association. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

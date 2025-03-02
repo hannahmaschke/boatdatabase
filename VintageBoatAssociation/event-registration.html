@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registration</title>
+    <link rel="stylesheet" href="./event-registration.css">
+
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a href="./index.html">Home</a>
+            <a href="../about-us.html">About Us</a>
+            <a href="../event-registration.html">Event Registration</a>
+            <a href="../number-registration.html">Number Registration</a>
+            <br></br>
+            <a href="../membership-renewal.html">Membership Renewal</a>
+            <a href="../main-hub.html">Main Hub</a>
+        </nav>
+    </header>
+
+    <br></br>
+    <h1>Register for Upcoming Events</h1>
+
+    <div class="container event-container">
+        <form id="eventForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Kate Reed" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="kreed@gmail.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="event">Event:</label>
+                <select id="event" name="event">
+                    <option value="Muskoka Antique & Classic Boat Show">Muskoka Antique & Classic Boat Show</option>
+                    <option value="Rideau Canal Vintage Boat Festival">Rideau Canal Vintage Boat Festival</option>
+                    <option value="Trent-Severn Antique Boat Parade">Trent-Severn Antique Boat Parade</option>
+                </select>
+            </div>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <footer>
+        <nav>
+            <a href="../index.html">Back to Home</a>
+        </nav>
+        <p>© 2025 Vintage Boat Association. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById("eventForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get the form data
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const eventName = document.getElementById("event").value;
+
+            // Prepare the data to be sent to the server
+            const formData = {
+                name: name,
+                email: email,
+                event: eventName
+            };
+
+            // Send the data to the backend using fetch
+            fetch('http://localhost:3000/event-registration', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+                .then(response => response.json())
+                .then(data => {
+                  //  alert(data.message); // success message from backend
+                    // reset the form after successful submission
+                    document.getElementById("eventForm").reset();
+                })
+                .catch(error => {
+                    alert('Error: ' + error); // error message if something goes wrong
+                });
+        });
+    </script>
+
+
+</body>
+
+</html>

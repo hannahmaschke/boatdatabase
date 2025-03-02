@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="./contact.css">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a href="./index.html">Home</a>
+            <a href="../about-us.html">About Us</a>
+            <a href="../event-registration.html">Event Registration</a>
+            <a href="../number-registration.html">Number Registration</a>
+            <br></br>
+            <a href="../membership-renewal.html">Membership Renewal</a>
+            <a href="../main-hub.html">Main Hub</a>
+        </nav>
+    </header>
+
+
+    <h1>Contact the Vintage Boat Association</h1>
+
+
+    <div class="container event-container">
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" placeholder="Saul Goodman" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="saul@magoodman.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message"
+                    placeholder="Hi, I’m Saul Goodman! Did you know that you have rights? The Constitution says you do. And so do I. I believe that until proven guilty, every man, woman,  and child in this country is innocent. And that’s why I fight for you, Vintage Boat Association!"
+                    required></textarea>
+            </div>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+    <footer>
+        <nav>
+            <a href="../faq.html">FAQ</a> |
+            <a href="../contact.html">Contact</a> |
+            <a href="../privacy-policy.html">Privacy Policy</a> |
+            <a href="../terms.html">Terms</a>
+        </nav>
+        <p>© 2025 Vintage Boat Association. All Rights Reserved.</p>
+    </footer>
+
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            // get form data
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value;
+            alert(name + ", your message was sent successfully!");
+       
+
+        // Prepare the data to be sent to the server
+        const formData = {
+            name: name,
+            email: email,
+            message: message
+        };
+
+        // Send the data to the backend using fetch
+        fetch('http://localhost:3000/contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+            .then(response => response.json())
+            .then(data => {
+                //alert(data.message); // success message from backend
+                // reset the form after successful submission
+                document.getElementById("contactForm").reset();
+            })
+            .catch(error => {
+                alert('Error: ' + error); // error message if something goes wrong
+            });
+    });
+    </script>
+
+</body>
+
+</html>
