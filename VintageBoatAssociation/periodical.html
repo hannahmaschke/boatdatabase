@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Periodical</title>
+</head>
+
+<header>
+    <nav>
+        <a href="./index.html">Home</a>
+        <a href="../about-us.html">About Us</a>
+        <a href="../event-registration.html">Event Registration</a>
+        <a href="../number-registration.html">Number Registration</a>
+        <br></br>
+        <a href="../membership-renewal.html">Membership Renewal</a>
+        <a href="../main-hub.html">Main Hub</a>
+        <a href="../periodical.html">Submit content for our newspaper!</a>
+    </nav>
+</header>
+
+<body>
+    <h1>Submit Periodical</h1>
+
+    <form id="periodicalForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+
+        <label for="membershipId">Membership ID:</label>
+        <input type="text" id="membershipId" name="membershipId" required>
+        <br>
+
+        <label for="text">Text:</label>
+        <textarea id="text" name="text" required></textarea>
+        <br>
+
+        <label for="photo">Photo:</label>
+        <input type="file" id="photo" name="photo" accept="image/*" required>
+        <br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        // Handle form submission
+        document.getElementById('periodicalForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const formData = new FormData();
+            formData.append('name', document.getElementById('name').value);
+            formData.append('membership_id', document.getElementById('membershipId').value);
+            formData.append('text', document.getElementById('text').value);
+            formData.append('photo', document.getElementById('photo').files[0]);
+
+            // Send form data to server
+            fetch('http://localhost:3000/submit-periodical', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Periodical submitted successfully!');
+                document.getElementById('periodicalForm').reset();  // Reset the form
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error submitting periodical.');
+            });
+        });
+    </script>
+</body>
+
+</html>

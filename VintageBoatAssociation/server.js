@@ -6,6 +6,7 @@ const app = express();
 const bcrypt = require('bcryptjs');
 const loginCollection = "login";
 const { ObjectId } = require('mongodb');
+const multer = require("multer");
 
 // Enable CORS for all routes
 app.use(cors({
@@ -332,7 +333,82 @@ app.post('/add-boat', (req, res) => {
 });
 
 
-// Start the server
+//------
+// Set up multer storage configuration
+const upload = multer({
+  dest: 'uploads/',  // This is where uploaded photos will be stored temporarily
+  limits: {
+      fileSize: 10 * 1024 * 1024, // 10MB size limit (optional)
+  },
+  fileFilter: (req, file, cb) => {
+      const filetypes = /jpeg|jpg|png|gif/;
+      const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+      const mimetype = filetypes.test(file.mimetype);
+
+      if (extname && mimetype) {
+          return cb(null, true);
+      } else {
+          cb(new Error('Only image files are allowed!'));
+      }
+  }
+});
+//--------------------
+// periodical page
+// set up multer for handling file uploads
+// Serve static files (like images) from the 'uploads' directory
+app.use('/uploads', express.static('uploads'));
+const storage = multer.memoryStorage();
+
+app.post('/submit-periodical', upload.single('photo'), (req, res) => {
+  const { name, membership_id, text } = req.body;
+  const photo = req.file; // Access the uploaded file
+
+  // Check if all fields are provided
+  if (!name || !membership_id || !text || !photo) {
+      return res.status(400).json({ message: 'All fields are required.' });
+  }
+
+  // Prepare the periodical data
+  const periodicalData = {
+      name,
+      membership_id,
+      text,
+      photo_path: photo.path, // Store the photo's path temporarily
+  };
+
+  // Save to the MongoDB periodicals collection
+  const periodicalsCollection = db.collection('periodicals');
+  periodicalsCollection.insertOne(periodicalData)
+      .then(() => {
+          res.status(200).json({ message: 'Periodical submitted successfully!' });
+      })
+      .catch(error => {
+          console.error('Error submitting periodical:', error);
+          res.status(500).json({ message: 'Error submitting periodical.' });
+      });
+});
+
+// ----------------------
+// system for employees to check submitted content
+app.get('/get-all-periodicals', (req, res) => {
+  const periodicalsCollection = db.collection('periodicals');
+
+  periodicalsCollection.find().toArray()
+      .then(periodicals => {
+          res.status(200).json(periodicals);
+      })
+      .catch(error => {
+          console.error('Error retrieving periodicals:', error);
+          res.status(500).send('Error retrieving periodicals');
+      });
+});
+
+// ---------
+const path = require('path');
+
+
+
+// start the server
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
 });

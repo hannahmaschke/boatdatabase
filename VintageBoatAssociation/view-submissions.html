@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Submissions</title>
+</head>
+<body>
+    <h1>Periodical Submissions</h1>
+    <div id="submissions"></div>
+
+    <script>
+        // Fetch the periodicals from the server
+        fetch('http://localhost:3000/get-all-periodicals')
+            .then(response => response.json())
+            .then(periodicals => {
+                console.log('Fetched periodicals:', periodicals);
+
+                // Get the container where we want to display the submissions
+                const submissionsContainer = document.getElementById('submissions');
+                
+                // Loop through the periodicals and display them
+                periodicals.forEach(periodical => {
+                    const periodicalDiv = document.createElement('div');
+                    periodicalDiv.classList.add('periodical');
+                    
+                    const name = periodical.name || 'No Name';
+                    const text = periodical.text || 'No Text';
+                    const photoPath = periodical.photo_path || '';  // Default to empty string if missing
+
+                    // Create the HTML content for this periodical
+                    periodicalDiv.innerHTML = `
+                        <h3>${name}</h3>
+                        <p>${text}</p>
+                        ${photoPath ? `<img src="http://localhost:3000/${photoPath}" alt="Periodical Image" width="200">` : '<p>No photo available</p>'}
+                    `;
+
+                    // Append the periodical to the container
+                    submissionsContainer.appendChild(periodicalDiv);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching periodicals:', error);
+                alert('Error fetching periodicals');
+            });
+    </script>
+</body>
+</html>
