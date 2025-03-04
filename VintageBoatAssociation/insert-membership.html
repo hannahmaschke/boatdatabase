@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership Registration</title>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a href="./index.html">Home</a>
+        </nav>
+    </header>
+
+    <h1>Add membership, then add the member</h1>
+
+    <div class="membership-container">
+        <form id="membershipForm">
+            <div class="form-group">
+                <label for="membershipStatus">Membership Status:</label>
+                <input type="text" id="membershipStatus" placeholder="Active" required>
+            </div>
+
+            <div class="form-group">
+                <label for="membershipType">Membership type:</label>
+                <input type="text" id="membershipType" placeholder="Bronze" required>
+            </div>
+
+            <div class="form-group">
+                <label for="startDate">Start date:</label>
+                <input type="datetime-local" id="startDate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="renewalDate">Renewal date:</label>
+                <input type="datetime-local" id="renewalDate" required>
+            </div>
+
+            <button type="submit">Register Membership</button>
+        </form>
+    </div>
+
+    <br><br>
+    <h2>Add Member</h2>
+
+    <div class="member-container">
+        <form id="memberForm">
+            <div class="form-group">
+                <label for="first_name">First name: </label>
+                <input type="text" id="first_name" placeholder="Bill" required>
+            </div>
+
+            <div class="form-group">
+                <label for="last_name">Last name:</label>
+                <input type="text" id="last_name" placeholder="Baggins" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="interest">Interest:</label>
+                <input type="text" id="interest" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email">
+            </div>
+
+            <div class="form-group">
+                <label for="phone_number">Phone Number:</label>
+                <input type="tel" id="phone_number">
+            </div>
+
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input type="text" id="city">
+            </div>
+
+            <div class="form-group">
+                <label for="membership_id">Membership Id:</label>
+                <input type="text" id="membership_id" readonly>
+            </div>
+
+            <button type="submit">Register Member</button>
+        </form>
+    </div>
+
+    <footer>
+        <nav>
+            <a href="../index.html">Back to Home</a>
+        </nav>
+        <p>© 2025 Vintage Boat Association. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Create Membership
+        document.getElementById("membershipForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            // Get the form data
+            const membershipStatus = document.getElementById("membershipStatus").value;
+            const membershipType = document.getElementById("membershipType").value;
+            const startDate = document.getElementById("startDate").value;
+            const renewalDate = document.getElementById("renewalDate").value;
+
+            const formData = { membershipStatus, membershipType, startDate, renewalDate };
+
+            fetch('http://localhost:3000/insert-membership', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("membership_id").value = data.membershipId; // Fill the member form's membership_id
+                document.getElementById("membershipForm").reset(); // Reset membership form after success
+                alert('Membership created! You may now create the member.');
+                // reset the form after successful submission
+                document.getElementById("membershipForm").reset();
+            })
+            .catch(error => alert('Error: ' + error));
+        });
+
+        // Create Member
+        document.getElementById("memberForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const formData = {
+                first_name: document.getElementById("first_name").value,
+                last_name: document.getElementById("last_name").value,
+                password: document.getElementById("password").value,
+                interest: document.getElementById("interest").value,
+                email: document.getElementById("email").value,
+                phone_number: document.getElementById("phone_number").value,
+                membership_id: document.getElementById("membership_id").value,
+                city: document.getElementById("city").value
+            };
+
+            fetch("http://localhost:3000/insert-member", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Member submitted:", data);
+                // reset the form after successful submission
+                document.getElementById("memberForm").reset();
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

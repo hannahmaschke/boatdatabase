@@ -23,6 +23,8 @@
     </header>
 
     <h1>Renew Your Membership</h1>
+    <h3>If you wish to sign up and join our organization, please fill out the contact form and we will get back to you
+        within 2 business days</h3>
 
 
     <div class="container event-container">
@@ -33,13 +35,13 @@
             </div>
 
             <div class="form-group">
-                <label for="memberID">Member ID:</label>
+                <label for="memberID">Membership ID:</label>
                 <input type="text" id="memberID" placeholder="148295701" required>
             </div>
 
             <div class="form-group">
                 <label for="boatNumber">Boat Registration Number:</label>
-                <input type="text" id="boatNumber" placeholder="782326994" required>
+                <input type="text" id="boatNumber" placeholder="782326994">
             </div>
 
             <button type="submit">Renew Membership</button>
@@ -63,7 +65,7 @@
             const memberID = document.getElementById("memberID").value;
             const boatNumber = document.getElementById("boatNumber").value;
 
-            alert(ownerName + ", your membership was successfully updated!");
+            // alert(ownerName + ", your membership was successfully updated!");
 
             const formData = {
                 name: ownerName,
@@ -81,14 +83,22 @@
             })
                 .then(response => response.json())
                 .then(data => {
-                    //alert(data.message);
-                    // reset the form after successful submission
-                    document.getElementById("membershipForm").reset();
+                    console.log('Response from server:', data); // Log server response
+
+                    if (data.message === 'Membership renewal successful!') {
+                        alert(ownerName + ", your membership has been renewed and is now valid for a year from today's date!");
+                        document.getElementById("membershipForm").reset();
+                    } else {
+                        // Handle the case where no matching member was found
+                        alert(data.message); // Show the error message from the server
+                    }
                 })
                 .catch(error => {
-                    alert('Error: ' + error);
+                    console.error('Error:', error); // Log error
+                    alert('Error: ' + error.message); // Show the error message
                 });
         });
+
     </script>
 
 </body>
