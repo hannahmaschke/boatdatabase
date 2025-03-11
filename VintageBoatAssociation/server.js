@@ -323,13 +323,13 @@ app.post('/add-boat', (req, res) => {
 
   const boatCollection = db.collection('boat');
   boatCollection.insertOne(boat)
-      .then(result => {
-          res.status(200).json({ message: 'Boat added successfully!', boatId: result.insertedId });
-      })
-      .catch(error => {
-          console.error('Error adding boat:', error);
-          res.status(500).json({ message: 'Error adding boat', error: error.message });
-      });
+  .then(result => {
+      res.status(200).json({ success: true, message: 'Boat added successfully!', boatId: result.insertedId });
+  })
+  .catch(error => {
+      console.error('Error adding boat:', error);
+      res.status(500).json({ success: false, message: 'Error adding boat', error: error.message });
+  });
 });
 
 
@@ -373,7 +373,7 @@ app.post('/submit-periodical', upload.single('photo'), (req, res) => {
       name,
       membership_id,
       text,
-      photo_path: photo.path, // Store the photo's path temporarily
+      photo_path: photo.path,
   };
 
   // Save to the MongoDB periodicals collection
@@ -402,6 +402,9 @@ app.get('/get-all-periodicals', (req, res) => {
           res.status(500).send('Error retrieving periodicals');
       });
 });
+
+// ------------------
+
 
 // ---------
 const path = require('path');

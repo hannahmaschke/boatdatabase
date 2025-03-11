@@ -1,0 +1,173 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #a6cfff;
+    color: #fff;
+    padding: 10px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #a6cfff;
+    padding: 10px 0;
+}
+
+nav a {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    padding: 12px 20px;
+    margin: 0 15px;
+    background-color: #007BFF;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #034995;
+    transform: scale(1.1);
+}
+
+nav a.active {
+    background-color: #e07b40;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 30px;
+    color: #2a3d66;
+}
+
+h1:hover {
+    transform: scale(1.1);
+    text-shadow: 0 0 10px rgba(138, 151, 220, 0.8),
+                 0 0 20px rgba(138, 151, 220, 0.6),
+                 0 0 30px rgba(138, 151, 220, 0.4);
+    color: #8a97dc;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    padding: 20px;
+    max-width: 400px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 1.1rem;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #034995;
+    transform: scale(1.1);
+}
+
+button:active {
+    background-color: #006bb3;
+}
+
+footer {
+    background-color: #a6cfff;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer nav a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+footer nav a:hover {
+    color: #f4a261;
+}
+
+footer p {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #2d2d2d;
+}
+
+@media (max-width: 768px) {
+    nav a {
+        display: block;
+        margin: 10px 0;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .login-container {
+        padding: 15px;
+        width: 90%;
+    }
+
+    label {
+        font-size: 1rem;
+    }
+
+    input {
+        font-size: 1rem;
+    }
+
+    button {
+        font-size: 1rem;
+    }
+}

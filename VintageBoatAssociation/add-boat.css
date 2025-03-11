@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #a6cfff;
+    color: #fff;
+    padding: 10px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #a6cfff;
+    padding: 10px 0;
+}
+
+nav a {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    padding: 12px 20px;
+    margin: 0 15px;
+    background-color: #007BFF;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #034995;
+    transform: scale(1.1);
+}
+
+nav a.active {
+    background-color: #e07b40;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 30px;
+    color: #2a3d66;
+}
+
+h1:hover {
+    transform: scale(1.1);
+    text-shadow: 0 0 10px rgba(138, 151, 220, 0.8),
+                 0 0 20px rgba(138, 151, 220, 0.6),
+                 0 0 30px rgba(138, 151, 220, 0.4);
+    color: #8a97dc;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.boat-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+}
+
+label {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="file"] {
+    border: none;
+}
+
+button {
+    background-color: #007BFF;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #034995;
+    transform: scale(1.1);
+}
+
+button:active {
+    background-color: #006bb3;
+}
+
+footer {
+    background-color: #a6cfff;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    margin-top: 30px;
+}
+
+footer nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+footer nav a:hover {
+    text-decoration: underline;
+}
+
+footer p {
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    nav a {
+        display: block;
+        margin: 10px 0;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    form {
+        width: 80%;
+        padding: 15px;
+    }
+
+    label {
+        font-size: 1rem;
+    }
+
+    input, textarea {
+        font-size: 1rem;
+    }
+
+    button {
+        font-size: 1rem;
+    }
+}

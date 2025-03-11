@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a Boat</title>
+    <link rel="stylesheet" href="add-boat.css">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a href="./index.html">Home</a>
+            <a href="./add-boat.html">Add a Boat</a>
+            <a href="./insert-membership.html">Add Membership</a>
+        </nav>
+    </header>
+
+    <h1>Add a New Boat</h1>
+
+    <div class="boat-container">
+        <form id="boatForm">
+            <!-- Boat Details -->
+            <div class="form-group">
+                <label for="boat_name">Boat Name:</label>
+                <input type="text" id="boat_name" placeholder="Sea Rover" required>
+            </div>
+
+            <div class="form-group">
+                <label for="boat_type">Boat Type:</label>
+                <input type="text" id="boat_type" placeholder="Motorboat" required>
+            </div>
+
+            <div class="form-group">
+                <label for="manufacture_year">Manufacture Year:</label>
+                <input type="number" id="manufacture_year" placeholder="2020" required>
+            </div>
+
+            <div class="form-group">
+                <label for="hull_material">Hull Material:</label>
+                <input type="text" id="hull_material" placeholder="Fiberglass" required>
+            </div>
+
+            <div class="form-group">
+                <label for="appraised_value">Appraised Value ($):</label>
+                <input type="number" id="appraised_value" placeholder="50000" required>
+            </div>
+
+            <div class="form-group">
+                <label for="condition">Condition:</label>
+                <input type="text" id="condition" placeholder="Excellent" required>
+            </div>
+
+            <div class="form-group">
+                <label for="era">Era:</label>
+                <input type="text" id="era" placeholder="Modern" required>
+            </div>
+
+            <div class="form-group">
+                <label for="registration_number">Registration Number:</label>
+                <input type="text" id="registration_number" placeholder="ABC1234" required>
+            </div>
+
+            <!-- Boat Related Information -->
+            <div class="form-group">
+                <label for="model_id">Model ID (ObjectId):</label>
+                <input type="text" id="model_id" placeholder="insert_the_model_id_here" required>
+            </div>
+
+            <div class="form-group">
+                <label for="restoration_id">Restoration ID (ObjectId):</label>
+                <input type="text" id="restoration_id" placeholder="insert_the_restoration_id_here" required>
+            </div>
+
+            <div class="form-group">
+                <label for="engine_id">Engine ID (ObjectId):</label>
+                <input type="text" id="engine_id" placeholder="insert_the_engine_id_here" required>
+            </div>
+
+            <div class="form-group">
+                <label for="insurance_id">Insurance ID (ObjectId):</label>
+                <input type="text" id="insurance_id" placeholder="insert_the_insurance_id_here" required>
+            </div>
+
+            <div class="form-group">
+                <label for="notable_history_id">Notable History ID (ObjectId):</label>
+                <input type="text" id="notable_history_id" placeholder="insert_the_notable_history_id_here">
+            </div>
+
+            <div class="form-group">
+                <label for="unique_features_id">Unique Features ID (ObjectId):</label>
+                <input type="text" id="unique_features_id" placeholder="insert_the_unique_feature_id_here">
+            </div>
+
+            <div class="form-group">
+                <label for="maintenance_record_id">Maintenance Record ID (ObjectId):</label>
+                <input type="text" id="maintenance_record_id" placeholder="insert_the_maintenance_record_id_here">
+            </div>
+
+            <div class="form-group">
+                <label for="unique_history_id">Unique History ID (ObjectId):</label>
+                <input type="text" id="unique_history_id" placeholder="insert_the_unique_history_id_here">
+            </div>
+
+            <button type="submit">Add Boat</button>
+        </form>
+    </div>
+
+    <footer>
+        <nav>
+            <a href="../systemindex.html">Back to Home</a>
+        </nav>
+        <p>© 2025 Vintage Boat Association. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById("boatForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            // Get the form data
+            const formData = {
+                boat_name: document.getElementById("boat_name").value,
+                boat_type: document.getElementById("boat_type").value,
+                manufacture_year: document.getElementById("manufacture_year").value,
+                hull_material: document.getElementById("hull_material").value,
+                appraised_value: document.getElementById("appraised_value").value,
+                condition: document.getElementById("condition").value,
+                era: document.getElementById("era").value,
+                registration_number: document.getElementById("registration_number").value,
+                model_id: document.getElementById("model_id").value,
+                restoration_id: document.getElementById("restoration_id").value,
+                engine_id: document.getElementById("engine_id").value,
+                insurance_id: document.getElementById("insurance_id").value,
+                notable_history_id: document.getElementById("notable_history_id").value,
+                unique_features_id: document.getElementById("unique_features_id").value,
+                maintenance_record_id: document.getElementById("maintenance_record_id").value,
+                unique_history_id: document.getElementById("unique_history_id").value
+            };
+
+            // Send the form data to the server
+            fetch('http://localhost:3000/add-boat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success === true) {
+        alert(data.message); // Show success message
+        document.getElementById("boatForm").reset(); // Reset the form
+    } else {
+        alert('Error adding boat: ' + data.message); // Show error message
+    }
+})
+
+            .catch(error => {
+                alert('Error: ' + error);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

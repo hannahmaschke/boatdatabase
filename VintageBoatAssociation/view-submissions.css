@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 40px;
+    color: #2a3d66;
+}
+
+h1:hover {
+    transform: scale(1.1);
+    text-shadow: 0 0 10px rgba(138, 151, 220, 0.8),
+                 0 0 20px rgba(138, 151, 220, 0.6),
+                 0 0 30px rgba(138, 151, 220, 0.4);
+    color: #8a97dc;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#submissions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.periodical {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    transition: transform 0.3s ease;
+}
+
+.periodical:hover {
+    transform: scale(1.02);
+}
+
+.periodical h3 {
+    font-size: 1.8rem;
+    color: #2a3d66;
+    margin-bottom: 10px;
+}
+
+.periodical p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.periodical img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.periodical p.no-photo {
+    color: #e07b40;
+    font-style: italic;
+}
+
+footer {
+    background-color: #a6cfff;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    font-size: 14px;
+    color: #2d2d2d;
+}
+
+footer nav {
+    margin-bottom: 15px;
+}
+
+footer nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 0 15px;
+    padding: 8px 15px;
+    background-color: #007BFF;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+footer nav a:hover {
+    background-color: #034995;
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .periodical h3 {
+        font-size: 1.5rem;
+    }
+
+    .periodical p {
+        font-size: 1rem;
+    }
+
+    .periodical img {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    footer nav a {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+}
