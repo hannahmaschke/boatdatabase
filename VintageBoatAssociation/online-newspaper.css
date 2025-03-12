@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+.newsletter {
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.newsletter-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.newsletter-header h1 {
+    font-size: 3em;
+    color: #003366;
+    margin-bottom: 5px;
+}
+
+.newsletter-header p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+.main-content {
+    margin-top: 20px;
+}
+
+h2 {
+    font-size: 2em;
+    color: #003366;
+    margin-bottom: 10px;
+}
+
+.date {
+    font-size: 1em;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+strong {
+    color: #003366;
+}
+
+.headline,
+.featured-article,
+.vba-news,
+.member-spotlight,
+.classifieds {
+    margin-bottom: 40px;
+}
+
+.classifieds ul {
+    list-style-type: none;
+}
+
+.classifieds li {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.classifieds li em {
+    font-style: italic;
+    color: #007BFF;
+}
+header {
+    background-color: #a6cfff;
+    color: #fff;
+    padding: 10px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #a6cfff;
+    padding: 10px 0;
+}
+
+nav a {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    padding: 12px 20px;
+    margin: 0 15px;
+    background-color: #007BFF;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #034995;
+    transform: scale(1.1);
+}
+
+nav a.active {
+    background-color: #e07b40;
+}
+.footer {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 2px solid #ccc;
+}
+
+.footer p {
+    font-size: 1em;
+    color: #777;
+}
+
+@media screen and (max-width: 768px) {
+    .newsletter {
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+
+    .date {
+        font-size: 0.9em;
+    }
+}

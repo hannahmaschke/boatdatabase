@@ -1,11 +1,10 @@
-/* Global Reset */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body Styles */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f9;
@@ -13,9 +12,8 @@ body {
     line-height: 1.6;
 }
 
-/* Header Styles */
 header {
-    background-color: #a6cfff; /* Light blue background */
+    background-color: #a6cfff; 
     color: #fff;
     padding: 20px 0;
     text-align: center;
@@ -42,20 +40,32 @@ nav a {
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-/* Hover Effect for Navigation Links */
 nav a:hover {
     background-color: #034995;
     transform: scale(1.1);
 }
 
-/* Main Heading */
 h1 {
     text-align: center;
     font-size: 2.5rem;
     margin-top: 30px;
     color: #2a3d66;
 }
-/* Container Styling */
+
+h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 30px;
+    color: #2a3d66;
+}
+
+h3 {
+    text-align: center;
+    font-size: 1.0rem;
+    margin-top: 30px;
+    color: #2a3d66;
+}
+
 .container {
     padding: 40px;
     max-width: 800px;
@@ -65,7 +75,6 @@ h1 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Form Styling */
 form {
     display: flex;
     flex-direction: column;
@@ -110,7 +119,6 @@ button:hover {
     background-color: #034995;
 }
 
-/* Footer Styles */
 footer {
     background-color: #a6cfff;
     color: #fff;
@@ -126,7 +134,7 @@ footer nav a {
 }
 
 footer nav a:hover {
-    color: #f4a261; /* Change color on hover */
+    color: #f4a261;
 }
 
 footer p {
@@ -135,7 +143,6 @@ footer p {
     color: #2d2d2d;
 }
 
-/* Mobile Responsiveness */
 @media (max-width: 768px) {
     header h1 {
         font-size: 2rem;
